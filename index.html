@@ -1,0 +1,313 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+
+		<title>reveal.js – The HTML Presentation Framework</title>
+
+		<meta name="description" content="A framework for easily creating beautiful presentations using HTML">
+		<meta name="author" content="Hakim El Hattab">
+
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<link rel="stylesheet" href="css/reveal.css">
+		<link rel="stylesheet" href="css/theme/black.css" id="theme">
+
+		<!-- Theme used for syntax highlighting of code -->
+		<link rel="stylesheet" href="lib/css/zenburn.css">
+
+		<!-- Printing and PDF exports -->
+		<script>
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
+
+		<!--[if lt IE 9]>
+		<script src="lib/js/html5shiv.js"></script>
+		<![endif]-->
+	</head>
+
+	<body>
+		<div class="reveal">
+
+			<!-- Any section element inside of this container is displayed as a slide -->
+			<div class="slides">
+				<section>
+					<h1>Ecma 6</h1>
+					<h3>New features in JS</h3>
+					<p>
+						<small>Created by <a href="#">Sławomir Król</a></small>
+					</p>
+				</section>
+
+				<section>
+					<ol>
+						<li>Babel js https://babeljs.io/</li>
+						<li>Arrow functions</li>
+						<li>Default parameters</li>
+						<li>let && const</li>
+						<li>Template literals</li>
+						<li>Destructuring assignment</li>
+						<li>Classes</li>
+						<li>Modules</li>
+					</ol>
+				</section>
+
+				<section>
+					<h3>Arrow functions</h3>
+					<pre><code class="hljs">
+// ES5 old school
+var anonymousFunction = function(data, index) {
+	...
+}
+
+// one line assignment, value returned
+var es6Function = data => data.prop;
+
+// multiparams, multiline statement block
+var es6Function = (data, index) => {
+	...
+};
+					</code></pre>
+				</section>
+
+				<section>
+					<h3>Default parameters</h3>
+					<pre><code class="hljs">
+function defaultUrlProvider() {
+	return 'https://test.io';
+}
+
+function test(title = 'name', urlProvider = defaultUrlProvider) {
+	...
+}
+					</code></pre>
+				</section>
+
+				<section>
+					<h3>let && const </h3>
+					<p> Let for block variables, for example in loops or inner if statements (not visible outside declared block). <br/>
+						Const for not mutable variables, mostly replaces 'var'
+					</p>
+					<pre><code class="hljs">
+const variable = 'value';
+variable = 'new val' // !!! Error variable cannot be changed
+
+function test() {
+	const t = '1';
+	for (let i = 1; i < 10; i++) {
+		...
+	}
+	console.log(i) // 'i' is undefined
+}
+					</code></pre>
+				</section>
+
+				<section>
+					<h3>Template literals using placeholders ${param}</h3>
+					<pre><code class="hljs">
+var first = 'John', last = 'Kowalski', id = 999;
+var person = {
+	first: first,
+	last:last,
+	id: id
+}
+
+var name = `Your name is ${first} ${last}.`
+var url = `http://localhost:3000/api/messages/${id}`
+var data = `Hello: ${person.first} ${person.last}`;
+					</code></pre>
+				</section>
+
+				<section>
+					<h3>Destructuring assignment of arrays and objects</h3>
+					<pre><code class="hljs">
+var list = [1, 2, 3, 4, 5];
+var [first, , last] = list;
+console.log(first + last); // 6
+
+var person = {
+	first: 'john', last: 'kowalski', age: 42
+};
+var {lastName, age} = person;
+console.log(lastName); // kowalski
+					</code></pre>
+				</section>
+
+				<section>
+					<h3>Function arguments assignment</h3>
+					<pre><code class="hljs">
+function personInfo({firstName, lastName}) {
+	return firstName + ' :: ' + lastName;
+}
+
+personInfo({
+	firstName: 'john',
+	lastName: 'kowalski',
+	age: 42
+});
+					</code></pre>
+				</section>
+
+				<section>
+					<h3>Classes</h3>
+					<pre><code class="hljs" data-trim>
+class TeddyBear extends Toy {
+	constructor(props) {
+		super(props);
+	}
+
+	get toyName() {
+		return 'Teddy ' + this.name;
+	}
+
+	sayHello() {
+		return this.toyName + 'says hello';
+	}
+}
+					</code></pre>
+				</section>
+
+				<section>
+					<h3>imports && exports</h3>
+					<pre><code class="hljs">
+export default class Toy {};
+import Toy from './Toy';
+
+export var toy1 = new Toy();
+export var toy1 = new Toy();
+import {toy1, toy2} from './ToysFactory';
+					</code></pre>
+				</section>
+
+				<section>
+					<h1>React.js</h1>
+					<h3> TODO App</h3>
+				</section>
+
+				<section>
+					<ol>
+						<li>Create react app from react-scripts</li>
+						<li>Code, run, build, test</li>
+						<li>React Components</li>
+						<li>Decomposing views</li>
+						<li>Render</li>
+					</ol>
+				</section>
+
+				<section>
+					<h3>Install react scripts with sass</h3>
+					<pre><code class="hljs">
+npm install -g create-react-app
+
+create-react-app test --scripts-version react-scripts-sass
+					</code></pre>
+				</section>
+
+				<section>
+					<h3>Stateless - Functional component</h3>
+					<pre><code class="hljs">
+function Welcome(props) {
+  return <h1>Hello, {props.name}</h1>;
+}
+					</code></pre>
+				</section>
+
+				<section>
+					<h3>Statefull - Component class</h3>
+					<pre><code class="hljs" data-trim>
+class Welcome extends React.Component {
+	constructor(props) {
+		super(props);
+		this.state = {
+			address: this.props.address
+		};
+	}
+	render() {
+		return (
+			<h1>
+				Hello, {this.props.name}
+				{this.state.address}
+			</h1>
+		);
+	}
+}
+					</code></pre>
+				</section>
+
+				<section>
+					<h3>Initial data</h3>
+					<pre><code class="hljs">
+const todos = [
+	{id: 0, title: 'Knockout', completed: true},
+	{id: 1, title: 'React', completed: false},
+	{id: 2, title: 'Angular', completed: false}
+];
+					</code></pre>
+				</section>
+
+				<section>
+					<h3>Render app into DOM</h3>
+					<pre><code class="hljs">
+// index.js
+import React from 'react';
+import ReactDOM from 'react-dom';
+import TodoApp from './components/todo/TodoApp';
+
+ReactDOM.render(<TodoApp /></TodoApp>,
+	document.getElementById('root'));
+					</code></pre>
+				</section>
+
+				<section>
+					<h3>Install react scripts with sass</h3>
+					<img src="images/todo-mvc.png" />
+				</section>
+
+				<section>
+					<img src="images/mockup.png" />
+				</section>
+
+				<section>
+						<a href="http://codepen.io/shawnyan/pen/ONOaRx">Complete codepen.io example</a>
+				</section>
+
+			</div>
+		</div>
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.js"></script>
+
+		<script>
+
+			// More info https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				controls: true,
+				progress: true,
+				history: true,
+				center: true,
+
+				transition: 'slide', // none/fade/slide/convex/concave/zoom
+
+				// More info https://github.com/hakimel/reveal.js#dependencies
+				dependencies: [
+					{ src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+					{ src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: 'plugin/zoom-js/zoom.js', async: true },
+					{ src: 'plugin/notes/notes.js', async: true }
+				]
+			});
+
+		</script>
+
+	</body>
+</html>
