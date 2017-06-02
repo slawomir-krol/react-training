@@ -1,0 +1,19 @@
+.good-choice, .bad-choice {
+	position: absolute;
+	right: 24px;
+	top: 60px;
+}
+
+.bad-choice {
+	color: red;
+}
+
+.good-choice {
+	color: green;
+}
+
+mark {
+	color: white;
+    background-color: gray;
+    padding: 0 8px !important;
+}
